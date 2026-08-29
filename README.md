@@ -18,14 +18,14 @@ and exports the chosen design to Excel, PDF and a printable summary.
 | Step | Page | Manuscript module |
 |------|------|-------------------|
 | — | Overview | the framework, bundled data, saved sessions |
-| 1 | Seismic hazard | Module 2 — NBCC 2020/2025 design spectrum Sa(T, X) |
-| 2 | Wall archetype | Modules 1 & 3 — archetype, CLT catalogue, connection pool |
-| 3 | Demand & panel check | Modules 2 & 4 — equivalent-static demand, gravity screening |
-| 4 | Connection configurations | Module 4 — every feasible storey layout |
+| 1 | Seismic hazard | Module 2: NBCC 2020/2025 design spectrum Sa(T, X) |
+| 2 | Wall archetype | Modules 1 & 3: archetype, CLT catalogue, connection pool |
+| 3 | Demand & panel check | Modules 2 & 4: equivalent-static demand, gravity screening |
+| 4 | Connection configurations | Module 4: every feasible story layout |
 | 5 | System chain | Module 5 — inter-storey continuity (Cl. 11.9.3.6.4), EDPs, per-storey editor |
 | 6 | Export & report | Excel · PDF · printable summary · session file |
 
-The design engine reuses the manuscript modules **unchanged** (`core/`), so
+The design engine reuses the manuscript modules **unchanged**, so
 results are identical to the batch pipeline.
 
 ---
@@ -57,7 +57,7 @@ bar).
    backbone and an expander of every database field + source-paper DOI link.
    **Pin up to four candidates** to compare them side by side on one radar and in
    a metric table. *Auto-assemble* runs the Module 5 depth-first search for a
-   continuous chain satisfying the inter-storey continuity bounds on the
+   continuous chain satisfying the inter-story continuity bounds on the
    over-capacity coefficient (CSA O86:24 Cl. 11.9.3.6.4) and reports the
    Engineering Demand Parameters.
 5. **System chain** — an embedded, scaled wall elevation beside live outputs for
