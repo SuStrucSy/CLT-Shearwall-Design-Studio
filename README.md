@@ -2,25 +2,18 @@
 
 An interactive companion tool for the manuscript *Design Space Exploration and
 Archetype Development for CLT Shearwalls under Capacity-Based Design*.
-Given a single wall archetype, it runs the paper's capacity-based design
-pipeline and returns **every feasible connection configuration per storey** with
+Given a wall archetype, it runs the paper's capacity-based design
+pipeline and returns **every feasible connection configuration per story ** with
 its performance metrics, lets you explore, compare and select configurations,
 and exports the chosen design to Excel, PDF and a printable summary.
 
-> ### Try it now — no installation
+> ### Try it now online
 >
 > **https://clt-shearwall-studio.onrender.com/**
 >
 > The full application runs in your browser. The first load may take up to a
-> minute: the host suspends idle instances and the first request wakes the
-> server. Press *Load example hazard (offline)* on the Overview page to reach a
-> complete result in two clicks.
+> minute
 >
-> Prefer to run it locally, or need it offline? See [Install & run](#install--run).
-
-The interface is a **guided, multi-page workflow**: a persistent navigator at the
-top of the window lists every design step in order, tagged with the manuscript
-module it implements, and marks each one as done, current or still locked.
 
 | Step | Page | Manuscript module |
 |------|------|-------------------|
@@ -33,75 +26,31 @@ module it implements, and marks each one as done, current or still locked.
 | 6 | Export & report | Excel · PDF · printable summary · session file |
 
 The design engine reuses the manuscript modules **unchanged** (`core/`), so
-results are identical to the batch pipeline: NBCC 2020/2025 equivalent-static
-seismic demand (`LateralDesign.py`, NBCC Cl. 4.1.8.11) and CSA O86:24
-capacity-based connection design (`ConnectionDesign.py`). The app (`app.py`,
-`engine.py`) only drives those functions for one archetype and presents the
-results; `ui_theme.py` holds the
-entire visual design system (tokens, light/dark themes, components), so the
-appearance can be changed without touching any engineering code.
+results are identical to the batch pipeline.
 
 ---
 
-## Install & run
-
-**One-click:** double-click `run_app.bat` (Windows) or `run_app.command` (macOS).
-It creates an isolated environment on first run and launches the app.
-
-> **Running the same folder on two machines (e.g. OneDrive-synced).** A virtual
-> environment is *not* portable across operating systems, so each platform gets
-> its own directory: `.venv-win` on Windows, `.venv-macos` on macOS,
-> `.venv-linux` elsewhere. The launchers decide whether to install by trying to
-> **import** the dependencies rather than by looking for a marker file, so an
-> environment synced from another machine can never make them skip the install.
-> An old shared `.venv/` from an earlier version can be deleted.
-
-Python **3.9 or newer** works: the launcher picks the newest interpreter it can
-find, and pip resolves the matching NiceGUI release (3.x on Python ≥ 3.10, an
-older 3.x/2.x on Python 3.9). The app supports all of them.
-
-**Manual:**
-
-```bash
-cd CLT_Shearwall_App
-pip install -r requirements.txt
-python app.py
-```
-
-A browser window opens at `http://localhost:8123`.
-
-**Port / sharing over Tailscale.** The app listens on port **8123** (8080 is
-avoided). Change it with the `APP_PORT` environment variable, e.g.
-`set APP_PORT=8200 && python app.py` (Windows) or `APP_PORT=8200 python app.py`
-(macOS/Linux). It binds `0.0.0.0`, so peers on your Tailscale network can reach
-it at `http://<your-tailscale-ip>:<port>/`.
-
----
 
 ## Workflow
 
-**Overview (landing page)** — what the framework does, the five modules it
-implements, and the bundled data. **Nothing to upload:** the connection database
-(representative + whole), the CLT panel catalogues and the higher-mode Mv/J table
-are all embedded. *Load example hazard (offline)* gets you to a full result in
-two clicks. Saved sessions are opened from here (or from *Session* in the app
+**Overview (landing page)** : what the framework does, the five modules it
+implements, and the bundled data.Saved sessions are opened from here (or from *Session* in the app
 bar).
 
-1. **Seismic hazard (NBCC 2020 / 2025 tool)** — the design spectral acceleration
+1. **Seismic hazard (NBCC 2020 / 2025 tool)** : the design spectral acceleration
    curve Sa(T, X) is fetched live from the Natural Resources Canada Seismic
    Hazard Tool for your site, and plotted with a marker at the current
    archetype's fundamental period. Manual entry is available offline.
-2. **Wall archetype** — occupancy, height class, seismic category, ductility,
+2. **Wall archetype** : occupancy, height class, seismic category, ductility,
    storeys, storey height, gravity load *q*, panel width *b_s*, panels *m*, the
    **CLT catalogue → layup** (managed catalogues, see below), and the
    **connection source** (representative vs whole database). A live summary panel
    shows total height, wall width *B*, derived aspect ratio *H/b_s*, estimated
    *Ta* and the number of candidate combinations that will be screened.
-3. **Demand & panel check** — fundamental period *Ta*, base shear *V*, importance
+3. **Demand & panel check** : fundamental period *Ta*, base shear *V*, importance
    factor, storey shear/overturning-moment profile, the design spectrum used, and
-   the CSA O86:24 gravity panel check. A failed archetype is explained here
-   instead of silently producing nothing.
-4. **Connection configurations** — one tab per storey with a sortable/filterable
+   the CSA O86:24 gravity panel check. 
+4. **Connection configurations** : one tab per story with a sortable/filterable
    table of every feasible WWS/WFT/WFS layout. Selecting a row shows a
    **performance radar** (strength / stiffness / Ω / deformation, normalised to
    the storey maxima) and **connection detail cards** with the tri-linear F–δ
@@ -112,12 +61,12 @@ bar).
    over-capacity coefficient (CSA O86:24 Cl. 11.9.3.6.4) and reports the
    Engineering Demand Parameters.
 5. **System chain** — an embedded, scaled wall elevation beside live outputs for
-   the current chain: per-storey performance metrics (Ω, Kw, Rwr, SBMS, storey
-   drift), the inter-storey **continuity check** (Ω-ratio 0.9–1.2,
+   the current chain: per-story performance metrics (Ω, Kw, Rwr, SBMS, story
+   drift), the inter-story **continuity check** (Ω-ratio 0.9–1.2,
    CSA O86:24 Cl. 11.9.3.6.4) with pass/fail badges, and **height profiles** of
-   Ω and cumulative storey displacement up the wall. A per-storey **editor**
+   Ω and cumulative story displacement up the wall. A per-storey **editor**
    lets you substitute *any* connection from the database and change
-   n_f / n_s — even choices outside the feasible pool — and shows exactly which
+   n_f / n_s even choices outside the feasible pool and shows exactly which
    CSA O86:24 clauses pass or fail.
 6. **Export & report** — Excel workbook and/or PDF report of the selected design
    with the NBCC hazard values, full connection metadata, clickable source DOIs
@@ -127,10 +76,10 @@ bar).
 ### Design sessions
 
 *Session → Save current session* writes a small JSON file (`exports/CLT_session_
-*.json`) holding the hazard spectrum, the archetype inputs and the per-storey
+*.json`) holding the hazard spectrum, the archetype inputs and the per-story
 selection — a few kilobytes, human-readable, easy to share. Opening one restores
 every input; press **Run design** and the results are reproduced from a fresh run
-of the engine, with the saved per-storey selection re-applied automatically.
+of the engine, with the saved per-story selection re-applied automatically.
 Results themselves are never stored, so every number in a restored session is
 traceable to a live run of the manuscript modules.
 
@@ -143,52 +92,26 @@ needs no redraw.
 
 ---
 
-## Connection database (embedded — no upload)
+## Connection database (embedded)
 
-The connection database ships **inside the app** (`data/`), selectable in step 3:
+The connection database ships inside the app (`data/`):
 
-- **Representative** (`data/connections_representative.xlsx`) — the paper's
+- **Representative** (`data/connections_representative.xlsx`). the paper's
   15 representative connections, one per populated stiffness–strength cluster:
   4 WWS, 7 WFT and 4 WFS (sheets `Selected_WWS/WFT/WFS`, columns `Zone_label`,
-  `Fy` [kN], `Ks` [kN/mm]). Small → fast enumeration.
-- **Whole database** (`data/connections_full.xlsx`) — the experimental
-  connection database of 522 tests described in Section 2.3 of the paper. Each
-  record carries Ks, the tri-linear backbone (Δy/Fy, Δmax/Fmax, Δu/Fu), µ,
-  failure mode and the source paper + DOI, mapped to roles WWS/WFT/WFS by
-  *Connection Type* and *Loading Type*. Much larger candidate pool → the run is
-  executed in the background with a progress bar and a per-storey result cap.
-
-`connections_db.py` handles loading, role mapping, DOI cleanup and detail
-extraction. To update the data, replace the files in `data/`.
+  `Fy` [kN], `Ks` [kN/mm]).
+  
 
 ## CLT panel catalogues (embedded)
 
-CLT panel properties come from **catalogues** (`catalogues/`), not an upload. A
+CLT panel properties come from **catalogues** (`catalogues/`). A
 default *Nordic X-Lam* catalogue ships with the app. In step 3 you pick a
 catalogue, then a layup within it; those section properties feed the CLT panel
 resistance. *Manage catalogues* lets you view/edit values inline, add layups,
-save a new catalogue (change the name) or delete one — stored as JSON in
+save a new catalogue (change the name) or delete one stored as JSON in
 `catalogues/`. `catalogues.py` writes the selected catalogue to the workbook
 format the engine reads. Each layup carries `plies`, `t_mm`, `reff0`, `Aeff`,
 `GAeff0`, `Ieff0`, `EIeff0` (odd ply counts 3–9).
-
-> The shipped default section-property values are template seeds — replace them
-> with catalogue-verified Nordic (or other manufacturer) values via the editor.
-
-## Embedded data — no uploads
-
-Everything the design needs is bundled in `data/` and `catalogues/`:
-
-- **Connection database** — `data/connections_full.xlsx` (whole DB) and
-  `data/connections_representative.xlsx` (clusters), both with full metadata.
-- **Higher-mode factors (Mv, J)** — `data/wall_system_mv.xlsx` (NBCC Table
-  4.1.8.11). Replace this file to use your own validated table.
-- **CLT catalogues** — `catalogues/*.json` (managed in-app; see above).
-- **Seismic hazard** — fetched live from the NBCC tool (step 2).
-
-`data_templates/` retains the Excel templates (regenerate with
-`python make_templates.py`) only as a format reference / for editing the embedded
-files; the app itself no longer asks for any upload.
 
 ---
 
@@ -235,9 +158,9 @@ Natural Resources Canada, https://doi.org/10.23687/b1bd3cf0-0672-47f4-8bfa-290ae
 | `n_s` | number of WFS connectors per panel |
 | `Kw` | equivalent lateral stiffness [kN/mm] |
 | `Rwr` | wall rocking resistance [kN] |
-| `SBMS` | storey bending moment strength [kN·m] |
+| `SBMS` | story bending moment strength [kN·m] |
 | `d_R`, `d_S` | elastic rocking and sliding drift components [mm] |
-| `MRD`, `MID`, `MGD` | max roof / inter-storey / global drift [%] |
+| `MRD`, `MID`, `MGD` | max roof / inter-story / global drift [%] |
 | `MBRR`, `BOCC` | base rocking resistance / base over-capacity coefficient |
 
 
@@ -255,8 +178,8 @@ paper are given in the manuscript's Section 2.4.
 | Minimum rocking resistance | 11.9.2.1.2.2 |
 | Rocking prevented by factored dead load | 11.9.2.1.2.4 |
 | Capacity protection of the non-dissipative panel | 11.9.3.6.4.1 |
-| Storey over-capacity coefficient Ω | 11.9.3.6.4.2 |
-| Inter-storey continuity of Ω (ratio 0.9–1.2) | 11.9.3.6.4 |
+| Story over-capacity coefficient Ω | 11.9.3.6.4.2 |
+| Inter-story continuity of Ω (ratio 0.9–1.2) | 11.9.3.6.4 |
 | Equivalent lateral stiffness contributions | 11.9.5.3 |
 
 Seismic demand follows the NBCC equivalent-static force procedure (Cl. 4.1.8.11),
@@ -292,54 +215,10 @@ CLT_Shearwall_App/
 └── exports/          # generated Excel / PDF reports
 ```
 
-## Distribution
-
-The repo is ready to publish alongside the paper:
-
-- **Run from source** (any OS with Python 3.9+): `run_app.bat` / `run_app.command`
-  or `pip install -r requirements.txt && python app.py`.
-- **Standalone executables** (no Python needed): `packaging/clt_app.spec` builds a
-  single-file executable with PyInstaller. Build locally on the target OS
-  (`pip install pyinstaller && pyinstaller packaging/clt_app.spec` → `dist/`), or
-  let CI do it: `.github/workflows/build-executables.yml` builds Windows + macOS
-  executables and attaches them to each GitHub Release automatically.
-- **Citation:** `CITATION.cff` (fill in co-authors + DOI). For a citable software
-  DOI, create a GitHub Release and archive it on **Zenodo** (or Borealis), then add
-  the DOI to `CITATION.cff` and the paper. Executables and source are MIT-licensed.
-
-> Attachments (connection-detail PDFs, test-curve images, failure photos) are **not**
-> bundled — the 1 GB Access database exceeds GitHub limits. Each connection links to
-> its **source paper via DOI**; deposit the full database + attachments on Zenodo /
-> Borealis for a permanent data DOI and link it from the app and paper.
-
-## Tests
-
-```bash
-python -m pytest -q
-```
-
-`test_ui.py` covers the application shell and step navigator, every step page,
-the full load→run→results flow, auto-assembly, both exports, the printable
-summary route and the session save/load round trip (NiceGUI headless `User`
-harness). `test_hazard.py` covers the NBCC hazard client: GraphQL query
-construction (Site Class enum / Vs30, NBC2020 & NBC2025), response parsing
-against the confirmed API schema, error handling, and end-to-end integration
-with the engine.
 
 ---
 
 ## Citation
-
-If you use this tool or its outputs, please cite the paper:
-
-> Alizadeh, R., & Rezaei Rad, A. (XXXX). *Design Space Exploration and Archetype
-> Development for CLT Shearwalls under Capacity-Based Design.* [Journal],
-> [volume], [pages]. https://doi.org/XXXX
-
-and the software itself (see `CITATION.cff`):
-
-> Alizadeh, R., & Rezaei Rad, A. (2026). *CLT Shearwall Design Studio*
-> [Computer software]. https://github.com/<user>/CLT-Shearwall-Design-Studio
 
 The embedded connection database derives from:
 
