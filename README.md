@@ -204,11 +204,10 @@ The embedded connection database derives from:
 roya.alizadeh@mail.utoronto.ca
 
 **Aryan Rezaei Rad** — Assistant Professor, Department of Civil & Mineral
-Engineering, University of Toronto, 35 St. George St., Room GB 245, Toronto, ON,
-Canada, M5S 1A4 — aryan.rad@utoronto.ca
+Engineering, University of Toronto, 35 St. George St. aryan.rad@utoronto.ca
 
 Questions, bug reports and feature requests are welcome through the
-[Issues](https://github.com/<user>/CLT-Shearwall-Design-Studio/issues) page.
+[Issues](https://github.com/SuStrucSy/CLT-Shearwall-Design-Studio/issues) page.
 
 ---
 
