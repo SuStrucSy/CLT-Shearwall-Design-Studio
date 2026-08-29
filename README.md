@@ -22,7 +22,7 @@ and exports the chosen design to Excel, PDF and a printable summary.
 | 2 | Wall archetype | Modules 1 & 3: archetype, CLT catalogue, connection pool |
 | 3 | Demand & panel check | Modules 2 & 4: equivalent-static demand, gravity screening |
 | 4 | Connection configurations | Module 4: every feasible story layout |
-| 5 | System chain | Module 5 — inter-storey continuity (Cl. 11.9.3.6.4), EDPs, per-storey editor |
+| 5 | System chain | Module 5: inter-storey continuity (Cl. 11.9.3.6.4), EDPs, per-storey editor |
 | 6 | Export & report | Excel · PDF · printable summary · session file |
 
 The design engine reuses the manuscript modules **unchanged**, so
