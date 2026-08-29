@@ -60,7 +60,7 @@ bar).
    continuous chain satisfying the inter-story continuity bounds on the
    over-capacity coefficient (CSA O86:24 Cl. 11.9.3.6.4) and reports the
    Engineering Demand Parameters.
-5. **System chain** — an embedded, scaled wall elevation beside live outputs for
+5. **System chain** : an embedded, scaled wall elevation beside live outputs for
    the current chain: per-story performance metrics (Ω, Kw, Rwr, SBMS, story
    drift), the inter-story **continuity check** (Ω-ratio 0.9–1.2,
    CSA O86:24 Cl. 11.9.3.6.4) with pass/fail badges, and **height profiles** of
@@ -68,7 +68,7 @@ bar).
    lets you substitute *any* connection from the database and change
    n_f / n_s even choices outside the feasible pool and shows exactly which
    CSA O86:24 clauses pass or fail.
-6. **Export & report** — Excel workbook and/or PDF report of the selected design
+6. **Export & report** : Excel workbook and/or PDF report of the selected design
    with the NBCC hazard values, full connection metadata, clickable source DOIs
    and the selected radar + tri-linear plots embedded; a **printable summary**
    page (`/report`) for browser print / save-as-PDF; and the **session file**.
@@ -77,7 +77,7 @@ bar).
 
 *Session → Save current session* writes a small JSON file (`exports/CLT_session_
 *.json`) holding the hazard spectrum, the archetype inputs and the per-story
-selection — a few kilobytes, human-readable, easy to share. Opening one restores
+selection, a few kilobytes, human-readable, easy to share. Opening one restores
 every input; press **Run design** and the results are reproduced from a fresh run
 of the engine, with the saved per-story selection re-applied automatically.
 Results themselves are never stored, so every number in a restored session is
@@ -123,21 +123,21 @@ Canada / Earthquakes Canada, via its GraphQL webservice
 (`https://www.earthquakescanada.nrcan.gc.ca/api/canshm/graphql`). In NBCC 2020
 the site amplification is embedded in the hazard values (site designation *X*),
 so the returned 5%-damped spectral accelerations Sa(T, X) are used **directly**
-as the design spectrum S(T) — no separate foundation factors — feeding the
+as the design spectrum S(T), no separate foundation factors, feeding the
 existing `LateralDesign` module unchanged.
 
 In the app (step 2):
 
-- **Edition** — NBC2020 (current code) or NBC2025.
-- **Location** — pick a city preset or enter latitude/longitude (any site in Canada).
-- **Site designation** — toggle between **Site Class** (A–E) and **Vs30**
+- **Edition** : NBC2020 (current code) or NBC2025.
+- **Location** : pick a city preset or enter latitude/longitude (any site in Canada).
+- **Site designation** : toggle between **Site Class** (A–E) and **Vs30**
   (140–3000 m/s).
-- **Probability of exceedance** — 2% / 50 yr (the NBCC design level; default),
+- **Probability of exceedance** : 2% / 50 yr (the NBCC design level; default),
   5% or 10%.
-- **Fetch from NBCC tool** — retrieves Sa(T, X) at
+- **Fetch from NBCC tool** : retrieves Sa(T, X) at
   T = PGA, 0.05, 0.1, 0.2, 0.3, 0.5, 1.0, 2.0, 5.0, 10.0 s and plots the design
   spectrum.
-- **Offline / manual entry** — if there is no internet, read the values off the
+- **Offline / manual entry** : if there is no internet, read the values off the
   web tool and type them in (an example spectrum is provided). These are also the
   values written into the exported report.
 
