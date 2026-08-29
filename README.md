@@ -187,37 +187,6 @@ with the seismic category determined per NBCC Art. 4.1.8.5.
 
 ---
 
-## Project structure
-
-```
-CLT_Shearwall_App/
-├── app.py            # NiceGUI application: step navigator + the six step pages
-├── ui_theme.py       # design system: tokens, light/dark CSS, cards/KPIs/pills
-├── session_io.py     # save / restore a design session (JSON)
-├── engine.py         # single-archetype driver (reuses core/ functions)
-├── connections_db.py # embedded connection database loader (representative + full)
-├── catalogues.py     # CLT panel catalogues (Nordic default + CRUD)
-├── hazard_nbcc.py    # NBCC 2020/2025 seismic hazard client (NRCan GraphQL API)
-├── viz.py            # radar / tri-linear / spectrum / profile options + wall SVG
-├── reporting.py      # Excel + PDF export (metadata, DOIs, embedded plots)
-├── make_templates.py # regenerates the Mv template
-├── run_app.bat / run_app.command   # Windows / macOS one-click launchers
-├── requirements.txt
-├── LICENSE, CITATION.cff, .gitignore
-├── pytest.ini, conftest.py, test_*.py              # tests
-├── packaging/clt_app.spec                          # PyInstaller build spec
-├── .github/workflows/build-executables.yml         # CI: Win/macOS executables
-├── core/             # manuscript modules, UNCHANGED (config, LateralDesign,
-│                     #   ConnectionDesign, Postprocessing)
-├── data/             # embedded connection database (full + representative)
-├── catalogues/       # CLT catalogues (JSON) — default Nordic X-Lam
-├── data_templates/   # Mv template (+ legacy hazard/CLT templates, unused)
-└── exports/          # generated Excel / PDF reports
-```
-
-
----
-
 ## Citation
 
 The embedded connection database derives from:
