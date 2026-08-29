@@ -3,7 +3,7 @@
 An interactive companion tool for the manuscript *Design Space Exploration and
 Archetype Development for CLT Shearwalls under Capacity-Based Design*.
 Given a wall archetype, it runs the paper's capacity-based design
-pipeline and returns **every feasible connection configuration per story ** with
+pipeline and returns **every feasible connection configuration per story** with
 its performance metrics, lets you explore, compare and select configurations,
 and exports the chosen design to Excel, PDF and a printable summary.
 
@@ -200,11 +200,11 @@ The embedded connection database derives from:
 
 ## Contact
 
-**Roya Alizadeh** — PhD Candidate, University of Toronto —
-roya.alizadeh@mail.utoronto.ca
+**Roya Alizadeh** | PhD Candidate, Department of Civil & Mineral
+Engineering, University of Toronto | roya.alizadeh@mail.utoronto.ca
 
-**Aryan Rezaei Rad** — Assistant Professor, Department of Civil & Mineral
-Engineering, University of Toronto, 35 St. George St. aryan.rad@utoronto.ca
+**Aryan Rezaei Rad** | Assistant Professor, Department of Civil & Mineral
+Engineering, University of Toronto| aryan.rad@utoronto.ca
 
 Questions, bug reports and feature requests are welcome through the
 [Issues](https://github.com/SuStrucSy/CLT-Shearwall-Design-Studio/issues) page.
