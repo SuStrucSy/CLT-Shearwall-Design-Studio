@@ -205,7 +205,7 @@ roya.alizadeh@mail.utoronto.ca
 
 **Aryan Rezaei Rad** — Assistant Professor, Department of Civil & Mineral
 Engineering, University of Toronto, 35 St. George St., Room GB 245, Toronto, ON,
-Canada, M5S 1A4 — aryan.rad@utoronto.ca — Tel: (416) 978-2077
+Canada, M5S 1A4 — aryan.rad@utoronto.ca
 
 Questions, bug reports and feature requests are welcome through the
 [Issues](https://github.com/<user>/CLT-Shearwall-Design-Studio/issues) page.
