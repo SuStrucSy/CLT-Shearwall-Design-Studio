@@ -19,10 +19,8 @@ and exports the chosen design to Excel, PDF and a printable summary.
 https://github.com/user-attachments/assets/fbbb4025-f55b-431c-8bc1-214c9ea878bb
 
 
+## Overview
 
-## Demo
-
-[▶ Watch the demo](https://youtu.be/6zrQT7dtMEo)
 | Step | Page | Manuscript module |
 |------|------|-------------------|
 | — | Overview | the framework, bundled data, saved sessions |
@@ -37,7 +35,9 @@ The design engine reuses the manuscript modules **unchanged**, so
 results are identical to the batch pipeline.
 
 ---
+## Demo
 
+[▶ Watch the demo](https://youtu.be/6zrQT7dtMEo) [YouTube channel](https://www.youtube.com/channel/UClvdIfASfB2McONHenHlaZQ)
 
 ## Workflow
 
