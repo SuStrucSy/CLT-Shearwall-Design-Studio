@@ -9,7 +9,7 @@ and exports the chosen design to Excel, PDF and a printable summary.
 
 > ### Try it now online
 >
-> **https://clt-shearwall-studio.onrender.com/**
+> **https://cltdesignstudio.ca/**
 >
 > The full application runs in your browser. The first load may take up to a
 > minute
