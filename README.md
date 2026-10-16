@@ -14,7 +14,11 @@ and exports the chosen design to Excel, PDF and a printable summary.
 > The full application runs in your browser. The first load may take up to a
 > minute
 >
-[![CLT Shearwall Design Studio — demo](https://img.youtube.com/vi/6zrQT7dtMEo/maxresdefault.jpg)](https://youtu.be/6zrQT7dtMEo)
+
+
+https://github.com/user-attachments/assets/fbbb4025-f55b-431c-8bc1-214c9ea878bb
+
+
 
 | Step | Page | Manuscript module |
 |------|------|-------------------|
